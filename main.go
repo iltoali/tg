@@ -32,7 +32,11 @@ func sendToTelegram(message string) {
 }
 
 func main() {
-	dirPath := "C:\\Users\\Ali\\Desktop\\Syburger\\tg"
+	currentDir, err := ioutil.Getwd()
+	if err != nil {
+		log.Fatalf("Hata: %v", err)
+	}
+	dirPath := currentDir
 
 	files, err := ioutil.ReadDir(dirPath)
 	if err != nil {
